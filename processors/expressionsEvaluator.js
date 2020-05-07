@@ -28,6 +28,11 @@ function process(doc) {
                 return fnNot(evaluatedParams[0]);
             }
 
+            if (doc["Fn::And"]){
+                var evaluatedParams = evalExpr(doc["Fn::And"]);
+                return fnAnd(evaluatedParams);
+            }
+
             if (doc["Fn::Join"]) {
                 var evaluatedParams = evalExpr(doc["Fn::Join"]);
                 return fnJoin(evaluatedParams[0], evaluatedParams[1]);
@@ -76,6 +81,10 @@ function process(doc) {
             return s.join("")
         }
         return s
+    }
+
+    function fnAnd(arr) {
+        return _.every(arr)
     }
 
     function fnEquals(a, b) {

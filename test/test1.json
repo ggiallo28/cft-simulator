@@ -25,7 +25,8 @@
     "CreateProdResources" : {"Fn::Equals" : [{"Ref" : "EnvType"}, "prod"]},
     "CreateDevResources" : {"Fn::Equals" : [{"Ref" : "EnvType"}, "dev"]},
     "OrTest" : {"Fn::Or": [ {"Condition":"CreateProdResources"}, {"Condition":"CreateDevResources"} ]},
-    "NonProd" : {"Fn::Not": [{"Condition":"CreateProdResources"}]}
+    "NonProd" : {"Fn::Not": [{"Condition":"CreateProdResources"}]},
+    "AndTest" : {"Fn::And": [ {"Condition":"CreateProdResources"}, {"Condition":"CreateDevResources"} ]}
   },
   
   "Resources" : {

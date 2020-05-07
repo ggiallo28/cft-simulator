@@ -26,6 +26,7 @@ function runTestSuite1(obj) {
         assert.equal(obj.Conditions.CreateProdResources, true, "True Condition");
         assert.equal(obj.Conditions.CreateDevResources, false, "False Condition");
         assert.equal(obj.Conditions.OrTest, true, "OR test");
+        assert.equal(obj.Conditions.AndTest, false, "And test");
         assert.equal(obj.Conditions.NonProd, false, "NOT test");
         assert.equal(obj.Resources.EC2Instance.Properties.FindInMapTest, "ami-use1", "MappingsTest");
         assert.equal(obj.Resources.EC2Instance.Properties.NestedIfTest, "c1.forprod", "Nested If test");
