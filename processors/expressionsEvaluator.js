@@ -47,6 +47,11 @@ function process(doc) {
                 var evaluatedParams = evalExpr(doc["Fn::Select"]);
                 return fnSelect(evaluatedParams[0], evaluatedParams[1]);
             }
+
+            if (doc["Fn::Sub"]) {
+                var evaluatedParams = evalExpr(doc["Fn::Sub"]);
+                return fnSub(evaluatedParams)
+            }            
             
             if(doc["Condition"]){
                 // is this a pure condition or a resource with a condition
@@ -58,13 +63,20 @@ function process(doc) {
             // regular object
             return _.mapValues(doc, (child) => evalExpr(child));
         }
-        else if (_.isArray(doc))
+        else if (_.isArray(doc)){
             return _.map(doc, (elm) => evalExpr(elm));
+        }
         else
             return doc;
     }
 
     // Internal Functions Implementations
+    function fnSub(s) {
+        if (_.isArray(s)){
+            return s.join("")
+        }
+        return s
+    }
 
     function fnEquals(a, b) {
         return _.isEqual(a, b);

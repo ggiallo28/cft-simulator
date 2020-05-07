@@ -1,6 +1,6 @@
 // Main processing pipline
 
-function processData(data,program) {
+function processData(data, program) {
     var ret;
     // -- Processors Pipline --
 

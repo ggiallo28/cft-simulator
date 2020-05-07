@@ -31,6 +31,8 @@ function runTestSuite1(obj) {
         assert.equal(obj.Resources.EC2Instance.Properties.NestedIfTest, "c1.forprod", "Nested If test");
         assert.equal(obj.Resources.EC2Instance.Properties.PseudoParam, "us-east-1", "Pseudo Param - region");
         assert.equal(obj.Resources.EC2Instance.Properties.SelectTest, "grapes", "Select Test");
+        assert.equal(obj.Resources.EC2Instance.Properties.SubTest, "arn:aws:ec2:us-east-1:1234567890:vpc/1", "Sub Test");
+        assert.equal(obj.Resources.EC2Instance.Properties.SubTestArray, "www.1prod", "Sub Array Test");
         assert.deepEqual(obj.Resources.EC2Instance.Properties.SplitTest, ["a", "b", "c"], "Split Test");
         assert(obj.Resources.ProdInstance, "Positive Condition");
         assert(obj.Resources.NonProdInstance == null, "Failed condition - node should be removed");
