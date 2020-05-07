@@ -1,10 +1,9 @@
 var _ = require('lodash');
 
 function process(doc) {
-    var regex = /\${AWS::[a-zA-Z0-9_]*}|\${[a-zA-Z0-9_]*}/gm;
     var globalScope = doc;
     return evalExpr(doc);
-    
+
     function evalExpr(doc) {
         
         //console.error("EVALUATING:", doc);
@@ -79,6 +78,8 @@ function process(doc) {
 
     // Internal Functions Implementations
     function fnSub(s) {
+        var regex = /\${AWS::[a-zA-Z0-9_]*}|\${[a-zA-Z0-9_]*}/gm;
+
         var str = s
         if (_.isArray(s)){
             str = s.join("")

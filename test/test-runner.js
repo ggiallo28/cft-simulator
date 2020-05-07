@@ -35,6 +35,7 @@ function runTestSuite1(obj) {
         assert.equal(obj.Resources.EC2Instance.Properties.SubTest, "arn:aws:ec2:us-east-1:1234567890:vpc/1", "Sub Test");
         assert.equal(obj.Resources.EC2Instance.Properties.SubTestArray, "www.1prod", "Sub Array Test");
         assert.deepEqual(obj.Resources.EC2Instance.Properties.SplitTest, ["a", "b", "c"], "Split Test");
+        assert.deepEqual(obj.Resources.EC2Instance.Properties.SubTestAgain, { "Fn::Sub": "${AWS::StackName}-low-prod"}, "Sub Stack Name");
         assert.deepEqual(obj.Resources.EC2Instance.Properties.SubStackName, { "Fn::Sub": "arn:aws:ec2:us-east-1:1234567890:vpc/${AWS::StackName}"}, "Sub Stack Name");
         assert(obj.Resources.ProdInstance, "Positive Condition");
         assert(obj.Resources.NonProdInstance == null, "Failed condition - node should be removed");

@@ -49,6 +49,7 @@
         "SubStackName" : { "Fn::Sub": "arn:aws:ec2:${AWS::Region}:${AWS::AccountId}:vpc/${AWS::StackName}" },
         "SubTestArray" : { "Fn::Sub": [ "www.${NameIndex}", {"Fn::Sub" : "${EnvType}" } ]},
         "SplitTest" : {"Fn::Split" : [ ":", "a:b:c" ]},
+        "SubTestAgain" : {"Fn::Sub": "${AWS::StackName}-low-${EnvType}"},
         "PseudoParam" : {"Ref": "AWS::Region"},
         "UserData": { "Fn::Base64": { "Fn::Join": ["\n", [
           "#!/bin/bash -xe",
