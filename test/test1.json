@@ -46,6 +46,7 @@
         "SelectTest": { "Fn::Select" : [ {"Ref": "NameIndex"}, [ "apples", "grapes", "oranges", "mangoes" ] ] },
         "JoinTest" : {"Fn::Join" : [ ":", [ "a", "b", "c" ] ]},
         "SubTest" : { "Fn::Sub": "arn:aws:ec2:${AWS::Region}:${AWS::AccountId}:vpc/${NameIndex}" },
+        "SubStackName" : { "Fn::Sub": "arn:aws:ec2:${AWS::Region}:${AWS::AccountId}:vpc/${AWS::StackName}" },
         "SubTestArray" : { "Fn::Sub": [ "www.${NameIndex}", {"Fn::Sub" : "${EnvType}" } ]},
         "SplitTest" : {"Fn::Split" : [ ":", "a:b:c" ]},
         "PseudoParam" : {"Ref": "AWS::Region"},
